@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Survey</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="bootstrap-5.0.2-dist/css/bootstrap.min.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="stylesheet" href="font-awesome-4.7.0/font-awesome-4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body class="bg-light">
+    <!-- NAVBAR -->
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark fw-bold shadow fixed-top">
+        <div class="container">
+            <a class="navbar-brand m-2" href="index.html">Suzana Milićev</a>
+
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbar"
+                aria-controls="navbar" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="navbar-collapse collapse show m-2 " id="navbar">
+                <ul class="navbar-nav mb-2 mb-lg-0 ms-auto">
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="portfolio.html">PORTFOLIO</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="index.html#about">ABOUT</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="index.html#contact">CONTACT</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="survey.html">SURVEY</a>
+                    </li>
+                    <li class="nav-item px-2">
+                        <a class="nav-link" href="courses.html">COURSES</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- SURVEY -->
+    <div class="container-fluid">
+        <div class="survey survey-style col-10 col-md-6 mx-auto">
+
+            <div class="text-center" id="start">
+                <h3><em>Portfolio</em></h3>
+                <h2>WONDERING IF TECH IS RIGHT FOR YOU?</h2>
+                <p>Take this 3-minute survey and find out.</p>
+                <button class="btn btn-dark" onclick="nextPage('next1')" type="button">START</button>
+            </div>
+
+            <div id="q1">
+                <p class="question-number-style">Question 1 of 5</p>
+                <h3>Before we dive in, what's your name?</h3>
+                <p class="text-secondary">(First name's fine!)</p>
+                <form class="form-floating mb-3">
+                    <input type="text" class="form-control border border-dark" id="firstname" required
+                        placeholder="Type your answer here..." name="fname">
+                    <label for="floatingInput1">Type your answer here...</label>
+                </form>
+                <button class="btn btn-dark" onclick="nextPage('next2')" type="button">NEXT</button>
+            </div>
+
+            <div id="q2">
+                <p class="question-number-style">Question 2 of 5</p>
+                <h3>Where are you in your career?</h3>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio" id="RadioDefault1.1" onclick="inputPopUp()">
+                    <label class="form-check-label" for="RadioDefault1.1">I know what career I want, and I need to learn
+                        some skills.</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio" id="RadioDefault1.2" onclick="inputPopUp()">
+                    <label class="form-check-label" for="RadioDefault1.2">I like my career - or, at least, I don't HATE
+                        it - but I keep wondering if there's something more out there.</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio" id="RadioDefault1.3" onclick="inputPopUp()">
+                    <label class="form-check-label" for="RadioDefault1.3">I took a break from my career, and now I'm
+                        ready to get back into the workforce.</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio" id="RadioDefault1.4" onclick="inputPopUp()">
+                    <label class="form-check-label" for="RadioDefault1.4">I want to make a career change, but I'm also
+                        super busy.</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio" id="RadioDefault1.5" onclick="inputPopUp()">
+                    <label class="form-check-label" for="RadioDefault1.5">I'm just starting out.</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio" id="RadioDefault1.6" onclick="inputPopUp()">
+                    <label class="form-check-label" for="RadioDefault1.6">I'm burnt out from going into the office
+                        every day and ready to make my own hours.</label>
+                </div>
+                <div class="form-check radio-style mb-3">
+                    <input class="form-check-input" type="radio" name="radio" id="RadioDefault1.7" onclick="inputPopUp('T')">
+                    <label class="form-check-label" for="RadioDefault1.7">Other(Please enter!):</label>
+                </div>
+                <div class="form-floating mb-3" id="optionalInput">
+                    <input type="text" class="form-control border border-dark" id="floatingInput2" required
+                        placeholder="Type your answer here...">
+                    <label for="floatingInput2">Type your answer here...</label>
+                </div>
+                <button class="btn btn-dark" onclick="nextPage('next3')" type="button">NEXT</button>
+            </div>
+
+            <div id="q3">
+                <p class="question-number-style">Question 3 of 5</p>
+                <h3>What's your biggest concern about learning tech skills?</h3>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio1" id="RadioDefault2.1">
+                    <label class="form-check-label" for="RadioDefault2.1">Even if I learned the skills, with my weird
+                        resume, why would they hire me over a computer science grad?</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio1" id="RadioDefault2.2">
+                    <label class="form-check-label" for="RadioDefault2.2">I don't have the time to learn new
+                        skills.</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio1" id="RadioDefault2.3">
+                    <label class="form-check-label" for="RadioDefault2.3">I dream of a remote job - but do those jobs
+                        REALLY exist for you, you know, REAL people like me?</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio1" id="RadioDefault2.4">
+                    <label class="form-check-label" for="RadioDefault2.4">It's too late in my career/life to make this
+                        big of a change.</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio1" id="RadioDefault2.5">
+                    <label class="form-check-label" for="RadioDefault2.5">Learning tech skills is expensive and I'm on a
+                        tigth budget - I'm not sure it's worth it.</label>
+                </div>
+                <div class="form-check radio-style mb-3">
+                    <input class="form-check-input" type="radio" name="radio1" id="RadioDefault2.6">
+                    <label class="form-check-label" for="RadioDefault2.6">My career is okay and learning tech skills is
+                        expensive - why should I rock the boat?</label>
+                </div>
+                <button class="btn btn-dark" onclick="nextPage('next4')" type="button">NEXT</button>
+            </div>
+
+            <div id="q4">
+                <p class="question-number-style">Question 4 of 5</p>
+                <h3>Picture the perfect workplace for you. What do you see?</h3>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio2" id="RadioDefault3.1">
+                    <label class="form-check-label" for="RadioDefault3.1">A bustling agency where I'm surrounded by
+                        incredible creative talent.</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio2" id="RadioDefault3.2">
+                    <label class="form-check-label" for="RadioDefault3.2">A collaborative environment where I'm LEADING
+                        the team.</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio2" id="RadioDefault3.3">
+                    <label class="form-check-label" for="RadioDefault3.3">A collaborative environment where I'm a
+                        full-time working member of a team working shoulder-to-sholuder with fun, experienced team
+                        members.</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio2" id="RadioDefault3.4">
+                    <label class="form-check-label" for="RadioDefault3.4">A coworking spot! I work with my team
+                        sometimes in-person and then have the freedom to finish my work around my busy schedule.</label>
+                </div>
+                <div class="form-check radio-style">
+                    <input class="form-check-input" type="radio" name="radio2" id="RadioDefault3.5">
+                    <label class="form-check-label" for="RadioDefault3.5">A video conference with coworkers on my
+                        screen...and the beach behind it.</label>
+                </div>
+                <div class="form-check radio-style mb-3">
+                    <input class="form-check-input" type="radio" name="radio2" id="RadioDefault3.6">
+                    <label class="form-check-label" for="RadioDefault3.6">Work at home in the morning, with time for
+                        kids' soccer practice in the afternoon. </label>
+                </div>
+                <button class="btn btn-dark" onclick="nextPage('next5')" type="button">NEXT</button>
+            </div>
+
+            <div id="q5">
+                <p class="question-number-style">Question 5 of 5</p>
+                <h3>Just one more thing! How much did you like this survey?</h3>
+                <p class="text-secondary">(We hope you liked it!)</p>
+
+                <label for="customRange1" class="form-label">1-5</label>
+                <input type="range" class="form-range" id="customRange1" min="1" max="5" step="1">
+
+                <button class="btn btn-dark" onclick="finalPage()" type="button">SUBMIT</button>
+            </div>
+
+            <div class="text-center" id="end">
+                <div id="end-1">
+                    <h3>Hi <span class="span1"></span></h3>
+                    <h3>Thank you for your time!</h3>
+                    <p>We appreciate your opinion. Ooooops, sorry to disappoint you.</p>
+                    <span class="material-symbols-outlined emoji-style">
+                        sentiment_dissatisfied
+                    </span>
+                </div>
+
+                <div id="end-2">
+                    <h3>Hi <span class="span1"></span></h3>
+                    <h3>Thank you for your time!</h3>
+                    <p>We appreciate your opinion. We hope it will be better next time!</p>
+                    <span class="material-symbols-outlined emoji-style">
+                        sentiment_neutral
+                    </span>
+                </div>
+
+                <div id="end-3">
+                    <h3>Hi <span class="span1"></span></h3>
+                    <h3>Thank you for your time!</h3>
+                    <p>We appreciate your opinion. Ooooops, Golden middle!</p>
+                    <span class="material-symbols-outlined emoji-style">
+                        sentiment_satisfied
+                    </span>
+                </div>
+
+                <div id="end-4">
+                    <h3>Hi <span class="span1"></span></h3>
+                    <h3>Thank you for your time!</h3>
+                    <p>We appreciate your opinion. Thanks for the very good rating!</p>
+                    <span class="material-symbols-outlined emoji-style">
+                        mood
+                    </span>
+                </div>
+
+                <div id="end-5">
+                    <h3>Hi <span class="span1"></span></h3>
+                    <h3>Thank you for your time!</h3>
+                    <p>We appreciate your opinion. Perfect! We are glad to meet your requirements.</p>
+                    <span class="material-symbols-outlined emoji-style">
+                        sentiment_very_satisfied
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+    <script src="JsFile.js"></script>
+
+</body>
+
+</html>

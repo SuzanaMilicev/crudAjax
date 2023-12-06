@@ -1,0 +1,121 @@
+/* INDEX PAGE */
+
+.header {
+    min-height: 550px;
+    background-color: #ededed;
+}
+
+.header-image {
+    width: 250px;
+    padding-top: 75px;
+}
+
+.grid-item {
+    max-width: 300px;
+}
+
+.grid-item:hover {
+    color: rgba(210, 229, 244, 0.5);
+    opacity: 0.3;
+    cursor: pointer;
+}
+
+.footer-style {
+    background-color: #ededed;
+}
+
+.about-section {
+    min-height: 400px;
+    background-color: rgba(210, 229, 244, 0.5)
+}
+
+.send-button button {
+    padding: 15px 20px !important;
+}
+
+.icon-style {
+    font-size: 40px !important;
+}
+
+.border-style {
+    border: 1px solid gray;
+    padding: 10px 15px;
+    border-radius: 5px;
+}
+
+.border-style:hover {
+    background-color: black;
+    color: white;
+    cursor: pointer;
+}
+
+/* PORTFOLIO PAGE */
+
+.header-portfolio {
+    padding-top: 125px;
+}
+
+.icon-size {
+    font-size: 50px;
+    color: white;
+}
+
+.grid-item-projects p {
+    left: 100px;
+    bottom: 50px;
+}
+
+.grid-item-projects img:hover {
+    transform: scale(0.9);
+    transition: 0.1s;
+}
+
+.color-overlay:hover {
+    background-color: aquamarine;
+    width: 100%;
+    height: 100%;
+}
+
+/* SURVEY PAGE */
+
+.survey-style {
+    padding-top: 150px;
+}
+
+.question-number-style {
+    background-color: #ededed;
+    padding: 5px;
+    width: 125px;
+    border: 1px solid black;
+}
+
+.radio-style {
+    background-color: #dcdcdc;
+    padding: 10px;
+    padding-left: 35px;
+    border: 1px solid black;
+}
+
+.emoji-style {
+    font-size: 100px !important;
+}
+
+#start {
+    display: block;
+}
+
+#q1, #q2, #q3, #q4, #q5, #end-1, #end-2, #end-3, #end-4, #end-5, #optionalInput {
+    display: none;
+}
+
+/* COURSES PAGE */
+
+.header-courses {
+    min-height: 550px;
+    background-image: url(images/courses-cover.jpg);
+    background-size: cover;
+}
+
+.heading {
+    padding-top: 270px !important;
+}
