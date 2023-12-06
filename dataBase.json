@@ -1,0 +1,52 @@
+{
+    "courses": [
+      {
+        "id": 1,
+        "course": "Osnove programiranja",
+        "startDate": "01.01.2024.",
+        "duration": "20",
+        "price": "250",
+        "details": "Cilj ovog kursa je da početnicima olakša proces učenja jer je za razvijanje naprednijih veština kakve se danas traže najvažnije naučiti osnove. Dobro poznavanje osnovnih koncepata ključno je za kasnije implementiranje teorijskog znanja u praktičnu primenu. Zato je važno put programiranja započeti baš sa Osnovama programiranja."
+      },
+      {
+        "id": 2,
+        "course": "Napredno programiranje",
+        "startDate": "02.02.2024.",
+        "duration": "25",
+        "price": "275",
+        "details": "Kurs Napredno programiranje uvodi polaznike u svet objektno orijentisanog načina razmišljanja. Kao rezultat razumevanja objektno orijentisanih principa, polaznici ovladavaju veštinama ignorisanja irelevantnih detalja u kompleksnom okruženju, što omogućava izolovanje jednostavnog, apstraktnog modela realnog sveta i razvijanje konkretnih softverskih rešenja koja se mogu iskoristiti u svakodnevnom životu."
+      },
+      {
+        "id": 3,
+        "course": "Web programiranje - Backend",
+        "startDate": "03.03.2024.",
+        "duration": "25",
+        "price": "300",
+        "details": "Kurs je namenjen svima koji žele da se upoznaju sa najnovijim tehnologijama koji se danas korise za izradu veb sajta, a posebno onima koji vole da znaju kako program funkcioniše “ispod haube”, na backend delu veb sajta. Kurs mogu pohađati svi koji imaju dobro poznavanje osnova programiranja, sistemskog programiranja i OOP koncepata, kao i za one koje se već bave veb programiranjem i žele da prošire svoje znanje upoznajući se sa ASP.NET MVC tehnologijom, jednom od najzastupljenihjih tehnologija u svetu."
+      }, 
+      {
+        "id": 4,
+        "course": "Web programiranje - Frontend",
+        "startDate": "04.04.2024.",
+        "duration": "25",
+        "price": "300",
+        "details": "Kurs frontend web programiranja je namenjen svima koji se žele baviti, ali i onima koji se već bave web programiranjem i žele da prošire svoje znanje i savladaju izradu savremenih web aplikacija koristeći najnovije tehnologije. Ovaj kurs je posebno namenjen onima koji imaju “oko za detalje” i koji vole da posvete posebnu pažnju dizajnu i funkcionalnosti klijentskog dela aplikacije."
+      },
+      {
+        "id": 5,
+        "course": "Manuelno testiranje softvera",
+        "startDate": "05.05.2024.",
+        "duration": "30",
+        "price": "350",
+        "details": "Kurs je namenjen svima koji žele da se bave testiranjem Web aplikacija ili Desktop aplikacija. Prilagođen je početnicima u oblasti manuelnog i automatskog testiranja softvera. Ovaj kurs je odličan početak ze one koji žele da se preusmere i oprobaju kao pronalazači bug-ova. Drugim rečima, ovo je kurs koji je namenjen svima koji ne vole kada neki program “baguje” i imaju želju to da promene. Naime, zadatak QA testera je upravo to – da nađe greške i disfunkcionalnosti u aplikaciji i na taj način unapredi njene performanse."
+      }, 
+      {
+        "id": 6,
+        "course": "Automatsko testiranje softvera",
+        "startDate": "06.06.2024.",
+        "duration": "30",
+        "price": "350",
+        "details": "Kurs Automatsko testiranje softvera je namenjen polaznicima koji žele da steknu teorijska i praktična znanja iz oblasti automatskog testiranja Web ili Desktop aplikacija. Kurs je koncipiran tako da ga mogu pratiti kako početnici u oblasti testiranja softvera, tako i oni koji već imaju predznanje iz ove oblasti, kao na primer polaznici koji su završili naš kurs Manuelno testiranje softvera."
+      }
+    ]
+  }
