@@ -102,6 +102,55 @@ $(document).ready(function () {
             makeReservation($(this));
         }
     })
+
+    $("#reservationForm").validate({
+        rules: {
+            reservname: {
+                required: true,
+                minlength: 3
+            },
+            reservsurname: {
+                required: true,
+                minlength: 3
+            },
+            email: "required",
+            reservnote: {
+                required: true,
+                minlength: 10
+            }
+        },
+        messages: {
+            reservname: {
+                required: "Unesite Vaše ime.",
+                minlength: "Ime mora imati bar 3 karaktera."
+            },
+            reservsurname: {
+                required: "Unesite Vaše prezime.",
+                minlength: "Prezime mora imati bar 3 karaktera."
+            },
+            email: "Unesite validan email.",
+            reservnote: {
+                required: "Komentar je obavezan.",
+                minlength: "Mora imati minimum 10 karaktera."
+            }
+        }
+    });
+
+    $("#reservations_table_body").on("click", 'button', function () {
+        if ($(this).hasClass("btn-outline-success")) {
+            editReservation($(this));
+        }
+        else if ($(this).hasClass("btn-outline-danger")) {
+            deleteReservation($(this));
+        }
+    })
+
+    $('#makeReservationModal').on('hidden.bs.modal', function () {
+        $("#reservname").val("");
+        $("#reservsurname").val("");
+        $("#reservemail").val("");
+        $("#reservnote").val("");
+    })
 });
 
 function getData() {
@@ -135,17 +184,14 @@ function fillTable(data) {
     })
 }
 
-function deleteEmployee(buttonObj) {
-    let emplId = buttonObj.attr("id");
-    let id = emplId.split("_")[1];
+function deleteReservation(buttonObj) {
+    let reservId = buttonObj.attr("id");
+    let id = reservId.split("_")[1];
     var deleteRequest = $.ajax({
         type: "DELETE",
-        url: "http://localhost:3000/employee/" + id
+        url: "http://localhost:3000/reservations/" + id
     });
     deleteRequest.done(function (podaci) {
-        //jedan nacin
-        // getData();
-        //drugi nacin
         buttonObj.parent().parent().remove();
         let tempIndex = allData.findIndex(x => x.id == id);
         if (tempIndex != -1) {
@@ -183,63 +229,95 @@ function makeReservation(buttonObj) {
     }
 }
 
-function saveChanges() {
-    let name = $("#name").val();
-    let surname = $("#surname").val();
-    let email = $("#email").val();
-    let jmbg = $("#jmbg").val();
-    let comment = $("#comment").val();
-    var editedEmployee = {
+
+function editReservation(buttonObj) {
+    $("#makeReservationModal").modal('toggle');
+    $("#makeReservationModalLabel").text("Change reservation");
+    let reservId = buttonObj.attr("id");
+    let id = reservId.split("_")[1];
+    clickedRowId = id;
+    let tempIndex = allData.findIndex(x => x.id == id);
+    if (tempIndex != -1) {
+        let selectedReservation = allData[tempIndex];
+        $("#reservname").val(selectedReservation.name);
+        $("#reservsurname").val(selectedReservation.surname);
+        $("#reservemail").val(selectedReservation.email);
+        $("#reservnote").val(selectedReservation.note);
+    }
+}
+
+function saveReservation() {
+    let name = $("#reservname").val();
+    let surname = $("#reservsurname").val();
+    let email = $("#reservemail").val();
+    let course = $("#reservcourse").val();
+    let price = $("#reservprice").val();
+    let note = $("#reservnote").val();
+    var reservedCourse = {
         name: name,
         surname: surname,
         email: email,
-        JMBG: jmbg,
-        comment: comment
+        course: course,
+        price: price,
+        note: note,
     };
 
-    let typeOfSaving = $("#editEmployeeModalLabel").text();
-    if (typeOfSaving == "Edit Employee") {
+    let typeOfSaving = $("#makeReservationModalLabel").text();
+    if (typeOfSaving == "Change reservation") {
         let editRequest = $.ajax({
             type: "PUT",
-            url: "http://localhost:3000/employee/" + clickedRowId,
-            data: editedEmployee
+            url: "http://localhost:3000/reservations/" + clickedRowId,
+            data: reservedCourse
         });
         editRequest.done(function () {
-            $("#editEmployeeModal").modal('toggle');
+            $("#makeReservationModal").modal('toggle');
             getData();
         });
         editRequest.fail(function () {
             alert("Izmena podataka nije uspela");
         })
     }
-    else {
-        let addNewRequest = $.ajax({
-            type: "POST",
-            url: "http://localhost:3000/employee",
-            data: editedEmployee
-        });
-        addNewRequest.done(function (savedData) {
-            $("#editEmployeeModal").modal('toggle');
-            // getData();
-            $("#empl_table_body").append(`
+
+    let addNewRequest = $.ajax({
+        type: "POST",
+        url: "http://localhost:3000/reservations",
+        data: reservedCourse
+    });
+    addNewRequest.done(function (savedData) {
+        $("#makeReservationModal").modal('toggle');
+        $("#reservations_table_body").append(`
             <tr>
-                <td> ${savedData.JMBG} </td>
                 <td> ${savedData.name} </td>
                 <td> ${savedData.surname} </td>
                 <td> ${savedData.email} </td>
-                <td> ${savedData.comment} </td>
-                <td> <button class="btn btn-warning" id="edit_${savedData.id}">Edit</button> </td>
-                <td> <button class="btn btn-danger" id="delete_${savedData.id}">Delete</button> </td>
+                <td> ${savedData.course} </td>
+                <td> ${savedData.price}$</td>
+                <td> ${savedData.note} </td>
+                <td> <button class="btn btn-outline-success" id="edit_${savedData.id}">Change Reservation</button> </td>
+                <td> <button class="btn btn-outline-danger" id="delete_${savedData.id}">Delete Reservation</button> </td>
             <\tr>
         `);
-        });
-        addNewRequest.fail(function () {
-            alert("Dodavanje podataka nije uspela");
-        })
-    }
+    });
+    addNewRequest.fail(function () {
+        alert("Rezervacija nije uspela");
+    })
 }
 
-function addNewEmployee() {
-    $("#editEmployeeModal").modal('toggle');
-    $("#editEmployeeModalLabel").text("Add New Employee");
+function viewReservations() {
+    let coursesTable = document.getElementById("coursesTable");
+    let reservationsTable = document.getElementById("reservationsTable");
+    coursesTable.style.display = "none";
+    reservationsTable.style.display = "block";
 }
+
+function backToCourses() {
+    let coursesTable = document.getElementById("coursesTable");
+    let reservationsTable = document.getElementById("reservationsTable");
+    reservationsTable.style.display = "none";
+    coursesTable.style.display = "block";
+}
+
+// function addNewEmployee() {
+//     $("#editEmployeeModal").modal('toggle');
+//     $("#editEmployeeModalLabel").text("Add New Employee");
+// }

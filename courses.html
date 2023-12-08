@@ -52,7 +52,7 @@
     </div>
 
     <!-- COURSES TABLE -->
-    <div class="container py-5">
+    <div class="container py-5" id="coursesTable">
         <div class="row">
             <div class="col-12 table-responsive-sm">
                 <table id="courses_table" class="table table-striped table-hover table-bordered">
@@ -72,12 +72,41 @@
             </div>
         </div>
         <div class="col-12 d-flex justify-content-end">
-            <button class="btn btn-primary mt-3" onclick="addNewEmployee()">View reservations</button>
+            <button class="btn btn-primary mt-3" onclick="viewReservations()">View reservations</button>
+        </div>
+    </div>
+
+    <!-- RESERVATIONS TABLE -->
+    <div class="container py-5" id="reservationsTable">
+        <div class="row">
+            <div class="col-12 table-responsive-sm">
+                <table id="reservations_table" class="table table-striped table-hover table-bordered">
+                    <thead class="table-info">
+                        <tr>
+                            <th>Name</th>
+                            <th>Surname</th>
+                            <th>E-mail</th>
+                            <th>Course</th>
+                            <th>Price</th>
+                            <th>Note</th>
+                            <th></th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody id="reservations_table_body">
+                    </tbody>
+                </table>
+            </div>
+        </div>
+        <div class="col-12 d-flex justify-content-end">
+            <p class="fw-bold mb-3">TOTAL: <span id="totalSum"></span>$</p> <br>
+            <button class="btn btn-primary mt-3" onclick="backToCourses()">Back to Courses</button>
         </div>
     </div>
 
     <!-- DETAILS MODAL  -->
-    <div class="modal fade text-center" id="viewDetailsModal" tabindex="-1" aria-labelledby="viewDetailsModalLabel" aria-hidden="true">
+    <div class="modal fade text-center" id="viewDetailsModal" tabindex="-1" aria-labelledby="viewDetailsModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -106,7 +135,8 @@
     </div>
 
     <!-- MAKE RESERVATION MODAL -->
-    <div class="modal fade" id="makeReservationModal" tabindex="-1" aria-labelledby="makeReservationModalLabel" aria-hidden="true">
+    <div class="modal fade" id="makeReservationModal" tabindex="-1" aria-labelledby="makeReservationModalLabel"
+        aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content">
                 <div class="modal-header">
@@ -117,11 +147,13 @@
                     <form id="reservationForm" role="form">
                         <div class="form-group">
                             <label for="reservcourse">Selected course:</label>
-                            <input id="reservcourse" type="text" name="reservcourse" class="form-control" disabled readonly/>
+                            <input id="reservcourse" type="text" name="reservcourse" class="form-control" disabled
+                                readonly />
                         </div>
                         <div class="form-group">
                             <label for="reservprice">Price:</label>
-                            <input id="reservprice" type="text" name="reservprice" class="form-control" disabled readonly/>
+                            <input id="reservprice" type="text" name="reservprice" class="form-control" disabled
+                                readonly />
                         </div>
                         <div class="form-group">
                             <label for="reservname">Name:</label>
@@ -133,7 +165,7 @@
                         </div>
                         <div class="form-group">
                             <label for="reservemail">Email:</label>
-                            <input type="reservemail" class="form-control" id="reservemail" name="email">
+                            <input type="email" class="form-control" id="reservemail" name="email">
                         </div>
                         <div class="form-group">
                             <label for="reservnote">Note:</label>
@@ -143,45 +175,46 @@
                 </div>
                 <div class="modal-footer">
                     <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                    <button type="button" class="btn btn-primary" onclick="saveChanges()">Save Reservation</button>
+                    <button type="button" class="btn btn-primary" onclick="saveReservation()">Save Reservation</button>
                 </div>
             </div>
         </div>
-  
-    <!-- FOOTER -->
-    <footer class="text-center footer-style">
 
-        <div class="container p-5">
-            <div class="row">
-                <div class="col-lg-4 col-md-4 col-12 mb-4 mb-md-0 pt-3">
-                    <h5>LOCATION</h5>
-                    <p class="pt-3">SMARTINIT <br>Novi sad, Serbia</p>
-                </div>
+        <!-- FOOTER -->
+        <footer class="text-center footer-style">
 
-                <div class="col-lg-4 col-md-4 col-12 mb-4 mb-md-0 pt-3">
-                    <h5>AROUND THE WEB</h5>
-                    <i class="fa fa-facebook border-style" aria-hidden="true"></i>
-                    <i class="fa fa-twitter border-style" aria-hidden="true"></i>
-                    <i class="fa fa-linkedin border-style" aria-hidden="true"></i>
-                    <i class="fa fa-globe border-style" aria-hidden="true"></i>
-                </div>
+            <div class="container p-5">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-12 mb-4 mb-md-0 pt-3">
+                        <h5>LOCATION</h5>
+                        <p class="pt-3">SMARTINIT <br>Novi sad, Serbia</p>
+                    </div>
 
-                <div class="col-lg-4 col-md-4 col-12 mb-4 mb-md-0 pt-3">
-                    <h5>ABOUT SMARTINIT</h5>
-                    <p class="pt-3">PanonIT Code Academy -> <a href="https://smartinit.net/" target="_blank">Start
-                            course</a></p>
+                    <div class="col-lg-4 col-md-4 col-12 mb-4 mb-md-0 pt-3">
+                        <h5>AROUND THE WEB</h5>
+                        <i class="fa fa-facebook border-style" aria-hidden="true"></i>
+                        <i class="fa fa-twitter border-style" aria-hidden="true"></i>
+                        <i class="fa fa-linkedin border-style" aria-hidden="true"></i>
+                        <i class="fa fa-globe border-style" aria-hidden="true"></i>
+                    </div>
+
+                    <div class="col-lg-4 col-md-4 col-12 mb-4 mb-md-0 pt-3">
+                        <h5>ABOUT SMARTINIT</h5>
+                        <p class="pt-3">PanonIT Code Academy -> <a href="https://smartinit.net/" target="_blank">Start
+                                course</a></p>
+                    </div>
                 </div>
             </div>
-        </div>
-        <div class="bg-dark text-light">
-            <p class="p-3 m-0">Copyright &copy; Suzana Milićev, 2023</p>
-        </div>
-    </footer>
+            <div class="bg-dark text-light">
+                <p class="p-3 m-0">Copyright &copy; Suzana Milićev, 2023</p>
+            </div>
+        </footer>
 
-    <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
-    <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
-    <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
-    <script src="JsFile.js"></script>
+        <script src="bootstrap-5.0.2-dist/js/bootstrap.bundle.min.js"></script>
+        <script src="https://code.jquery.com/jquery-3.7.1.min.js"></script>
+        <script src="https://cdn.datatables.net/1.10.16/js/jquery.dataTables.min.js"></script>
+        <script src="https://cdn.jsdelivr.net/npm/jquery-validation@1.19.5/dist/jquery.validate.min.js"></script>
+        <script src="JsFile.js"></script>
 
 </body>
 
