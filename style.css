@@ -119,3 +119,7 @@
 .heading {
     padding-top: 270px !important;
 }
+
+#reservationsTable {
+    display: none;
+}
