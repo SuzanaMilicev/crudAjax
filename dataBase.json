@@ -51,40 +51,40 @@
   ],
   "reservations": [
     {
+      "name": "Pera",
+      "surname": "Peric",
+      "email": "milicev@freemail.hu",
+      "course": "Web programiranje - Backend",
+      "price": "300",
+      "note": "eeeeeeeeeee",
+      "id": 1
+    },
+    {
       "name": "Mika",
       "surname": "Mikic",
       "email": "suzana.milicev16@gmail.com",
       "course": "Manuelno testiranje softvera",
       "price": "350",
-      "note": "hahahahahah",
-      "id": 1
-    },
-    {
-      "name": "Pera",
-      "surname": "Peric",
-      "email": "milicev@freemail.hu",
-      "course": "Napredno programiranje",
-      "price": "275",
-      "note": "blablablab",
+      "note": "eeeeeeeeeeeeeeerrrrrrrrr",
       "id": 2
     },
     {
-      "name": "Pera",
+      "name": "Mika",
       "surname": "Peric",
       "email": "milicev@freemail.hu",
-      "course": "Napredno programiranje",
-      "price": "275",
-      "note": "adsaffsdgargad",
-      "id": 4
+      "course": "Automatsko testiranje softvera",
+      "price": "350",
+      "note": "sssssssss",
+      "id": 3
     },
     {
-      "name": "Pera",
+      "name": "Mika",
       "surname": "Peric",
-      "email": "milicev@freemail.hu",
-      "course": "Napredno programiranje",
-      "price": "275",
-      "note": "adsaffsdgargad",
-      "id": 5
+      "email": "milicev@freemail.huyyyyyyyy",
+      "course": "Osnove programiranja",
+      "price": "250",
+      "note": "eeeeeeeeeeeeeeee",
+      "id": 4
     }
   ]
 }
