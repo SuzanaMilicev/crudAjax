@@ -89,10 +89,12 @@ function finalPage() {
 /* COURSES PAGE */
 
 var allData = [];
+var allData1 = [];
 var clickedRowId = "";
 
 $(document).ready(function () {
     getData();
+    getData1();
 
     $("#courses_table_body").on("click", 'button', function () {
         if ($(this).hasClass("btn-outline-info")) {
@@ -169,6 +171,7 @@ function calc_total() {
     $('#sum').text(sum);
 }
 
+/*GetData from courses */
 function getData() {
     var getRequest = $.ajax({
         type: "GET",
@@ -184,6 +187,22 @@ function getData() {
     });
 }
 
+/*GetData from reservations */
+function getData1() {
+    var getRequest = $.ajax({
+        type: "GET",
+        url: "http://localhost:3000/reservations"
+    });
+    getRequest.done(function (podaci) {
+        allData1 = podaci;
+        fillTable1(podaci);
+    });
+    getRequest.fail(function (error) {
+        alert(error.statusText);
+    });
+}
+
+/*Fill table courses */
 function fillTable(data) {
     $("#courses_table_body").empty();
     $.each(data, function (i, podatak) {
@@ -195,6 +214,25 @@ function fillTable(data) {
                 <td> ${podatak.price}$ </td>
                 <td> <button class="btn btn-outline-info" id="view_${podatak.id}">View details</button> </td>
                 <td> <button class="btn btn-outline-primary" id="reserve_${podatak.id}">Make reservation</button> </td>
+            <\tr>
+        `);
+    })
+}
+
+/*Fill table reservations */
+function fillTable1(data) {
+    $("#reservations_table_body").empty();
+    $.each(data, function (i, podatak) {
+        $("#reservations_table_body").append(`
+            <tr>
+                <td> ${podatak.name} </td>
+                <td> ${podatak.surname} </td>
+                <td> ${podatak.email} </td>
+                <td> ${podatak.course}$ </td>
+                <td> ${podatak.price}$ </td>
+                <td> ${podatak.note}$ </td>
+                <td> <button class="btn btn-outline-success" id="edit_${savedData.id}">Change Reservation</button> </td>
+                <td> <button class="btn btn-outline-danger" id="delete_${savedData.id}">Delete Reservation</button> </td>
             <\tr>
         `);
     })
@@ -234,6 +272,7 @@ function viewDetails(buttonObj) {
 
 function makeReservation(buttonObj) {
     $("#makeReservationModal").modal('toggle');
+    $("#makeReservationModalLabel").text("Make reservation");
     let courseId = buttonObj.attr("id");
     let id = courseId.split("_")[1];
     clickedRowId = id;
@@ -251,9 +290,11 @@ function editReservation(buttonObj) {
     let reservId = buttonObj.attr("id");
     let id = reservId.split("_")[1];
     clickedRowId = id;
-    let tempIndex = allData.findIndex(x => x.id == id);
+    let tempIndex = allData1.findIndex(x => x.id == id);
     if (tempIndex != -1) {
-        let selectedReservation = allData[tempIndex];
+        let selectedReservation = allData1[tempIndex];
+        $("#reservcourse").val(selectedReservation.course);
+        $("#reservprice").val(selectedReservation.price);
         $("#reservname").val(selectedReservation.name);
         $("#reservsurname").val(selectedReservation.surname);
         $("#reservemail").val(selectedReservation.email);
@@ -286,21 +327,21 @@ function saveReservation() {
         });
         editRequest.done(function () {
             $("#makeReservationModal").modal('toggle');
-            getData();
+            getData1();
         });
         editRequest.fail(function () {
             alert("Izmena podataka nije uspela");
         })
     }
-
-    let addNewRequest = $.ajax({
-        type: "POST",
-        url: "http://localhost:3000/reservations",
-        data: reservedCourse
-    });
-    addNewRequest.done(function (savedData) {
-        $("#makeReservationModal").modal('toggle');
-        $("#reservations_table_body").append(`
+    else {
+        let addNewRequest = $.ajax({
+            type: "POST",
+            url: "http://localhost:3000/reservations",
+            data: reservedCourse
+        });
+        addNewRequest.done(function (savedData) {
+            $("#makeReservationModal").modal('toggle');
+            $("#reservations_table_body").append(`
             <tr>
                 <td> ${savedData.name} </td>
                 <td> ${savedData.surname} </td>
@@ -312,10 +353,11 @@ function saveReservation() {
                 <td> <button class="btn btn-outline-danger" id="delete_${savedData.id}">Delete Reservation</button> </td>
             <\tr>
         `);
-    });
-    addNewRequest.fail(function () {
-        alert("Rezervacija nije uspela");
-    })
+        });
+        addNewRequest.fail(function () {
+            alert("Rezervacija nije uspela");
+        })
+    }
 }
 
 function viewReservations() {
