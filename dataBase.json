@@ -50,5 +50,32 @@
     }
   ],
   "reservations": [
+    {
+      "name": "Mika",
+      "surname": "Mikic",
+      "email": "mm@gmail.com",
+      "course": "Automatsko testiranje softvera",
+      "price": "350",
+      "note": "mmmmmmmmmmm",
+      "id": 1
+    },
+    {
+      "name": "",
+      "surname": "",
+      "email": "",
+      "course": "Web programiranje - Frontend",
+      "price": "300",
+      "note": "",
+      "id": 2
+    },
+    {
+      "name": "Pera",
+      "surname": "Mikic",
+      "email": "milicev@freemail.hu",
+      "course": "Napredno programiranje",
+      "price": "275",
+      "note": "ggggggggggggg",
+      "id": 3
+    }
   ]
 }
