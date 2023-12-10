@@ -151,7 +151,23 @@ $(document).ready(function () {
         $("#reservemail").val("");
         $("#reservnote").val("");
     })
+
+    $('.total').each(function (i) {
+        calc_total(i);
+    });
+
 });
+
+function calc_total() {
+    var sum = 0;
+    $("th.total > td").each(function () {
+        var value = parseInt($(this).text());
+        if (!isNaN(value)) {
+            sum += value;
+        }
+    });
+    $('#sum').text(sum);
+}
 
 function getData() {
     var getRequest = $.ajax({
@@ -228,7 +244,6 @@ function makeReservation(buttonObj) {
         $("#reservprice").val(selectedCourse.price);
     }
 }
-
 
 function editReservation(buttonObj) {
     $("#makeReservationModal").modal('toggle');
@@ -316,8 +331,3 @@ function backToCourses() {
     reservationsTable.style.display = "none";
     coursesTable.style.display = "block";
 }
-
-// function addNewEmployee() {
-//     $("#editEmployeeModal").modal('toggle');
-//     $("#editEmployeeModalLabel").text("Add New Employee");
-// }
